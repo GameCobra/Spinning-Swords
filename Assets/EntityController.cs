@@ -12,11 +12,14 @@ public class EntityController : MonoBehaviour
     public StatsContainer stats;
 
     [SerializeField] GameObject swordSparksPrefab;
-
+    [SerializeField] GameObject dashParticalsPrefab;
 
     GameObject heldWeapon;
     GameObject arm;
     TextMeshPro healthTextObject;
+
+    public float dashCharge = 0;
+    float maxDashEnergy = 10;
 
     void Start()
     {
@@ -49,11 +52,26 @@ public class EntityController : MonoBehaviour
         arm.transform.localScale = new Vector3(stats.weaponScale, stats.weaponScale, 1);
         healthTextObject.text = "" + stats.health;
 
+
         GameObject[] ballList = GameObject.FindGameObjectsWithTag("Ball");
         if (ballList.Length > 1)
         {
-            GameObject closestBall = ballList.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude).Where(x => x.transform.position != gameObject.transform.position).First();
+            GameObject closestBall = ballList.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude)
+                                             .Where(x => x.transform.position != gameObject.transform.position)
+                                             .First();
+            Vector3 directionToClosestBall = gameObject.transform.position - closestBall.transform.position;
+
+
             gameObject.GetComponent<Rigidbody2D>().AddForce((closestBall.transform.position - gameObject.transform.position).normalized * 0.5f);
+
+            dashCharge += Time.deltaTime;
+            if (dashCharge >= maxDashEnergy)
+            {
+                dashCharge = 0;
+                gameObject.GetComponent<Rigidbody2D>().AddForce((closestBall.transform.position - gameObject.transform.position).normalized * 15f, ForceMode2D.Impulse);
+                GameObject spawnedSparksObject = GameObject.Instantiate(dashParticalsPrefab, gameObject.transform.position, Quaternion.FromToRotation(Vector3.right, directionToClosestBall));
+                Destroy(spawnedSparksObject, 1);
+            }
         }
 
 
