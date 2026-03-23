@@ -9,6 +9,7 @@ public class EntityController : MonoBehaviour
     public Inventory inventory;
 
     //Stats
+    public StatsContainer baseStats;
     public StatsContainer stats;
 
     [SerializeField] GameObject swordSparksPrefab;
@@ -24,12 +25,10 @@ public class EntityController : MonoBehaviour
     void Start()
     {
         inventory.PopulateInventoryRandomly();
-        stats = inventory.GetStatsAsObject();
 
-        StatsContainer baseStats = new StatsContainer();
+        baseStats = new StatsContainer();
         baseStats.SetEmpty();
         baseStats.health = Random.Range(1, 8);
-        stats.addStatsObject(baseStats);
 
 
         // Disables colision with its weapon 
@@ -48,6 +47,13 @@ public class EntityController : MonoBehaviour
 
     void FixedUpdate()
     {
+        stats = inventory.GetStatsAsObject();
+        stats.addStatsObject(baseStats);
+        if (stats.health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         arm.transform.RotateAround(gameObject.transform.position, new Vector3(0, 0, 1), stats.weaponSpinSpeed);
         arm.transform.localScale = new Vector3(stats.weaponScale, stats.weaponScale, 1);
         healthTextObject.text = "" + stats.health;
@@ -81,13 +87,9 @@ public class EntityController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
-            stats.health -= 1;
+            baseStats.health -= 1;
             gameObject.GetComponent<Rigidbody2D>().AddForce(collision.GetContact(0).normal * 3, ForceMode2D.Impulse);
 
-        }
-        if (stats.health <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -101,112 +103,6 @@ public class EntityController : MonoBehaviour
 
     void FlipSwordSpin()
     {
-        stats.weaponSpinSpeed *= -1;
+        baseStats.weaponSpinSpeed *= -1;
     }
-}
-
-[System.Serializable]
-public class Inventory
-{
-    public Helmet head;
-    public Weapon weapon;
-
-    public void PopulateInventoryRandomly()
-    {
-        head = new Helmet();
-        weapon = new Weapon();
-        head.GenerateRandomPiece();
-        weapon.GenerateRandomPiece();
-    }
-    public StatsContainer GetStatsAsObject()
-    {
-        StatsContainer stats = new StatsContainer();
-        stats.SetEmpty();
-
-        stats.addStatsObject(head.GetStatsAsObject());
-        stats.addStatsObject(weapon.GetStatsAsObject());
-        return stats;
-    }
-}
-
-
-[System.Serializable]
-public class StatsContainer
-{
-    public int health;
-    public float speed;
-    public float weaponScale;
-    public float weaponSpinSpeed;
-
-    public void SetEmpty()
-    {
-        health = 0;
-        speed = 0;
-        weaponScale = 0;
-        weaponSpinSpeed = 0;
-    }
-
-    public void addStatsObject(StatsContainer stats)
-    {
-        health += stats.health;
-        speed += stats.speed;
-        weaponScale += stats.weaponScale;
-        weaponSpinSpeed += stats.weaponSpinSpeed;
-    }
-}
-
-public class Helmet : IGear
-{
-    public int bonusHealth { get; set; }
-    public float bonusSpeed { get; set; }
-    public void GenerateRandomPiece()
-    {
-        bonusHealth = Random.Range(0, 4);
-        bonusSpeed = Random.Range(0.0f, 0.4f);
-    }
-    public StatsContainer GetStatsAsObject()
-    {
-        StatsContainer stats = new StatsContainer();
-        stats.SetEmpty();
-
-        stats.health = bonusHealth;
-        stats.speed = bonusSpeed;
-        return stats;
-    }
-}
-
-public class Weapon : IGear
-{
-    public int bonusHealth { get; set; }
-    public float bonusSpeed { get; set; }
-    public float weaponScale { get; set; }
-    public float weaponSpinSpeed { get; set; }
-    public void GenerateRandomPiece()
-    {
-        bonusHealth = Random.Range(0, 4);
-        bonusSpeed = Random.Range(0.0f, 0.4f);
-        weaponScale = Random.Range(0.5f, 2.5f);
-        weaponSpinSpeed = Random.Range(2.5f, 10f);
-    }
-    public StatsContainer GetStatsAsObject()
-    {
-        StatsContainer stats = new StatsContainer();
-        stats.SetEmpty();
-
-        stats.health = bonusHealth;
-        stats.speed = bonusSpeed;
-        stats.weaponScale = weaponScale;
-        stats.weaponSpinSpeed = weaponSpinSpeed;
-        return stats;
-    }
-}
-
-public interface IGear
-{
-    int bonusHealth { get; set; }
-    float bonusSpeed { get; set; }
-
-    void GenerateRandomPiece();
-    StatsContainer GetStatsAsObject();
-
 }
