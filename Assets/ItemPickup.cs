@@ -18,8 +18,8 @@ public class ItemPickup : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            collision.gameObject.GetComponent<EntityController>().inventory = inventory;
-            Destroy(gameObject);
+            //collision.gameObject.GetComponent<EntityController>().inventory = inventory;
+            //Destroy(gameObject);
         }
     }
 }

@@ -2235,16 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c94800cdfe2964f9230a119dc9a75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseStats:
-    health: 0
-    speed: 0
-    weaponScale: 0
-    weaponSpinSpeed: 0
-  stats:
-    health: 0
-    speed: 0
-    weaponScale: 0
-    weaponSpinSpeed: 0
+  definition: {fileID: 11400000, guid: daa4557b9ca2b374cbbe8338cd3ab7fd, type: 2}
   swordSparksPrefab: {fileID: 3913918237338404906, guid: fd00323e174fa4b4e98127d9d72c56f2, type: 3}
   dashParticalsPrefab: {fileID: 8672148852464509819, guid: 93ff9ee8b7a0bb244a7e2683aaa0e679, type: 3}
   dashCharge: 0
@@ -2818,16 +2809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c94800cdfe2964f9230a119dc9a75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseStats:
-    health: 0
-    speed: 0
-    weaponScale: 0
-    weaponSpinSpeed: 0
-  stats:
-    health: 0
-    speed: 0
-    weaponScale: 0
-    weaponSpinSpeed: 0
+  definition: {fileID: 11400000, guid: daa4557b9ca2b374cbbe8338cd3ab7fd, type: 2}
   swordSparksPrefab: {fileID: 3913918237338404906, guid: fd00323e174fa4b4e98127d9d72c56f2, type: 3}
   dashParticalsPrefab: {fileID: 8672148852464509819, guid: 93ff9ee8b7a0bb244a7e2683aaa0e679, type: 3}
   dashCharge: 0
