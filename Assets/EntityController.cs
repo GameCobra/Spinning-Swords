@@ -28,9 +28,7 @@ public class EntityController : MonoBehaviour
     void Start()
     {
         equipmentInstance.definition = definition;
-        equipmentInstance.health = Random.Range(definition.health[0], definition.health[1]);
-        equipmentInstance.weaponScale = Random.Range(definition.weaponScale[0], definition.weaponScale[1]);
-        equipmentInstance.weaponSpinSpeed = Random.Range(definition.weaponSpinSpeed[0], definition.weaponSpinSpeed[1]);
+        equipmentInstance.RandomizeAtributes();
 
 
 
@@ -43,7 +41,10 @@ public class EntityController : MonoBehaviour
 
         // Disables colision with its weapon 
         arm = gameObject.transform.GetChild(0).gameObject;
-        heldWeapon = arm.transform.GetChild(0).gameObject;
+
+        heldWeapon = GameObject.Instantiate(equipmentInstance.definition.weaponObject, arm.transform, false);
+
+        //heldWeapon = arm.transform.GetChild(0).gameObject;
         Physics2D.IgnoreCollision(heldWeapon.GetComponent<Collider2D>(), gameObject.GetComponent < Collider2D>());
 
         // Connects to the health text

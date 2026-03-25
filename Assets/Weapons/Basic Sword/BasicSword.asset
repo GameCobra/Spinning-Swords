@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6245b1ff0f8d20a499e67cf688fe1e61, type: 3}
-  m_Name: WeaponDefinition
+  m_Name: BasicSword
   m_EditorClassIdentifier: 
   health:
     x: 1
@@ -24,5 +24,9 @@ MonoBehaviour:
   userScale:
     x: 0.75
     y: 1.25
-  weaponObject: {fileID: 3913918237338404906, guid: fd00323e174fa4b4e98127d9d72c56f2, type: 3}
-  onWeaponBlock: {fileID: 11400000, guid: a7c8ce21baca9be45a1f358e701a7066, type: 2}
+  weaponObject: {fileID: 2835867135963195221, guid: 39d43c04fb1692e4b902ed7dc622a162, type: 3}
+  onWeaponBlock:
+  - {fileID: 11400000, guid: a7c8ce21baca9be45a1f358e701a7066, type: 2}
+  onWeaponHitEnemy: []
+  enemyOnWeaponBlock: []
+  enemyOnWeaponHitEnemy: []

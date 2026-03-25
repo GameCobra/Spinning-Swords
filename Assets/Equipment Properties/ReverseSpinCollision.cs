@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ReverseSpin", menuName = "Properties/ReverseSpin")]
-public class ReverseSpin : OnWeaponBlock
+public class ReverseSpinCollision : EquipmentCollision
 {
     public override void execute(ref EquipmentInstance instance, Collision2D collision)
     {
