@@ -10,30 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6245b1ff0f8d20a499e67cf688fe1e61, type: 3}
-  m_Name: BasicSword
+  m_Name: BasicHammer
   m_EditorClassIdentifier: 
   health:
     x: 4
     y: 4
   weaponSpinSpeed:
-    x: 2.5
-    y: 10
+    x: 1
+    y: 6
   weaponScale:
     x: 0.5
     y: 2.5
   userScale:
     x: 0.75
     y: 1.25
-  weaponObject: {fileID: 2835867135963195221, guid: 39d43c04fb1692e4b902ed7dc622a162, type: 3}
+  weaponObject: {fileID: 3804716930790152805, guid: 45e276abe5a09ae47a1f6b3f9e35e124, type: 3}
   onWeaponBlock:
   - {fileID: 11400000, guid: 7f45645804d4c3a44b3cae321779961d, type: 2}
-  - {fileID: 11400000, guid: a7c8ce21baca9be45a1f358e701a7066, type: 2}
-  - {fileID: 11400000, guid: 341730551fa8e5f4eb79ecb2b8cfa17c, type: 2}
-  onWeaponHitEnemy:
-  - {fileID: 11400000, guid: a7c8ce21baca9be45a1f358e701a7066, type: 2}
-  - {fileID: 11400000, guid: 341730551fa8e5f4eb79ecb2b8cfa17c, type: 2}
+  onWeaponHitEnemy: []
   enemyOnWeaponBlock:
+  - {fileID: 11400000, guid: 341730551fa8e5f4eb79ecb2b8cfa17c, type: 2}
   - {fileID: 11400000, guid: 341730551fa8e5f4eb79ecb2b8cfa17c, type: 2}
   enemyOnWeaponHitEnemy:
   - {fileID: 11400000, guid: c10541c113336854d8c8cfbc646e4b68, type: 2}
+  - {fileID: 11400000, guid: f8beeb207171ac849a027a542a86e221, type: 2}
   - {fileID: 11400000, guid: f8beeb207171ac849a027a542a86e221, type: 2}

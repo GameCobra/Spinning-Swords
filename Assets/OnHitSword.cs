@@ -16,9 +16,6 @@ public class OnHitSword : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Weapon")
-        {
-            gameObject.transform.parent.parent.GetComponent<EntityController>().OnSwordCollision(collision);
-        }
+        gameObject.transform.parent.parent.GetComponent<EntityController>().OnSwordCollision(collision);
     }
 }

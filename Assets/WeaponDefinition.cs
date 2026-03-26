@@ -78,6 +78,8 @@ public class EquipmentInstance
         health = Random.Range(definition.health[0], definition.health[1]);
         weaponScale = Random.Range(definition.weaponScale[0], definition.weaponScale[1]);
         weaponSpinSpeed = Random.Range(definition.weaponSpinSpeed[0], definition.weaponSpinSpeed[1]);
+        userScale = Random.Range(definition.userScale[0], definition.userScale[1]);
+
     }
 }
 

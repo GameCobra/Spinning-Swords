@@ -60,6 +60,9 @@ public class EntityController : MonoBehaviour
     {
         //stats = inventory.GetStatsAsObject();
         //stats.addStatsObject(baseStats);
+
+        gameObject.transform.localScale = new Vector3(equipmentInstance.userScale, equipmentInstance.userScale, 1);
+
         if (equipmentInstance.health <= 0)
         {
             Destroy(gameObject);
@@ -98,19 +101,24 @@ public class EntityController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
-            equipmentInstance.health -= 1;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(collision.GetContact(0).normal * 3, ForceMode2D.Impulse);
+            collision.gameObject.transform.parent.parent.gameObject.GetComponent<EntityController>().equipmentInstance.definition.EnemyTriggerOnWeaponHitEnemy(ref equipmentInstance, collision);
 
         }
     }
 
     public void OnSwordCollision(Collision2D collision)
     {
-        gameObject.GetComponent<Rigidbody2D>().AddForce(collision.GetContact(0).normal * 7, ForceMode2D.Impulse);
-        GameObject spawnedSparksObject = GameObject.Instantiate(swordSparksPrefab, collision.GetContact(0).point, Quaternion.FromToRotation(collision.GetContact(0).point, collision.GetContact(0).normal));
-        Destroy(spawnedSparksObject, 1);
-        equipmentInstance.definition.TriggerOnWeaponBlock(ref equipmentInstance, collision);
-        //FlipSwordSpin();
+        if (collision.gameObject.tag == "Weapon")
+        {
+            equipmentInstance.definition.TriggerOnWeaponBlock(ref equipmentInstance, collision);
+            collision.gameObject.transform.parent.parent.gameObject.GetComponent<EntityController>().equipmentInstance.definition.EnemyTriggerOnWeaponBlock(ref equipmentInstance, collision);
+        }
+
+        if (collision.gameObject.tag == "Ball")
+        {
+            equipmentInstance.definition.TriggerOnWeaponHitEnemy(ref equipmentInstance, collision);
+        }
+
     }
     /*
     void FlipSwordSpin()
