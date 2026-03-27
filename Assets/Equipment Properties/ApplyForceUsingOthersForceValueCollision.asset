@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ed926bb3b89ee47b0bfe7d659b09d7, type: 3}
-  m_Name: ApplyForceWeaponCollision
+  m_Script: {fileID: 11500000, guid: 76dd57369a11d27469b4139998c3bcc0, type: 3}
+  m_Name: ApplyForceUsingOthersForceValueCollision
   m_EditorClassIdentifier: 
-  force: 3

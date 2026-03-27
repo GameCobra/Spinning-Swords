@@ -12,6 +12,8 @@ public class EquipmentDefinition : ScriptableObject
     public float2 weaponSpinSpeed;
     public float2 weaponScale;
     public float2 userScale;
+    public float2 knockback;
+    public float2 knockbackResistance;
 
     [Header("Visual Aspects")]
     public GameObject weaponObject;
@@ -70,6 +72,8 @@ public class EquipmentInstance
     public float weaponSpinSpeed;
     public float weaponScale;
     public float userScale;
+    public float knockback;
+    public float knockbackResistance;
 
     public EquipmentDefinition definition;
 
@@ -79,6 +83,9 @@ public class EquipmentInstance
         weaponScale = Random.Range(definition.weaponScale[0], definition.weaponScale[1]);
         weaponSpinSpeed = Random.Range(definition.weaponSpinSpeed[0], definition.weaponSpinSpeed[1]);
         userScale = Random.Range(definition.userScale[0], definition.userScale[1]);
+        knockback = Random.Range(definition.knockback[0], definition.knockback[1]);
+        knockbackResistance = Random.Range(definition.knockbackResistance[0], definition.knockbackResistance[1]);
+
 
     }
 }

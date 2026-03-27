@@ -8,7 +8,7 @@ public class EntityController : MonoBehaviour
 {
     //public Inventory inventory;
 
-    EquipmentInstance equipmentInstance = new EquipmentInstance();
+    public EquipmentInstance equipmentInstance = new EquipmentInstance();
     public EquipmentDefinition definition;
 
     //Stats

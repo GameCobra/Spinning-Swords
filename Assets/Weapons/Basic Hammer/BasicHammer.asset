@@ -24,14 +24,18 @@ MonoBehaviour:
   userScale:
     x: 0.75
     y: 1.25
+  knockback:
+    x: 6
+    y: 9
+  knockbackResistance:
+    x: 0.25
+    y: 0.5
   weaponObject: {fileID: 3804716930790152805, guid: 45e276abe5a09ae47a1f6b3f9e35e124, type: 3}
   onWeaponBlock:
   - {fileID: 11400000, guid: 7f45645804d4c3a44b3cae321779961d, type: 2}
   onWeaponHitEnemy: []
   enemyOnWeaponBlock:
-  - {fileID: 11400000, guid: 341730551fa8e5f4eb79ecb2b8cfa17c, type: 2}
-  - {fileID: 11400000, guid: 341730551fa8e5f4eb79ecb2b8cfa17c, type: 2}
+  - {fileID: 11400000, guid: 6bdd3952972368f44b3e7debb5339ea9, type: 2}
   enemyOnWeaponHitEnemy:
   - {fileID: 11400000, guid: c10541c113336854d8c8cfbc646e4b68, type: 2}
-  - {fileID: 11400000, guid: f8beeb207171ac849a027a542a86e221, type: 2}
-  - {fileID: 11400000, guid: f8beeb207171ac849a027a542a86e221, type: 2}
+  - {fileID: 11400000, guid: 6bdd3952972368f44b3e7debb5339ea9, type: 2}
